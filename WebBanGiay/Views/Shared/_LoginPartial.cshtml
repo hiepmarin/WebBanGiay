@@ -5,9 +5,9 @@
     {
     @Html.AntiForgeryToken()
 
-<ul class="nav navbar-nav navbar-right">
-    <li class="nav-item dropdown">
-        <a style="font-size:larger" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<ul class="nav navbar-nav navbar-right navbar-light">
+    <li class="nav-item dropdown nav-item dropdown pr-4 pl-4">
+        <a style="font-size: larger" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Hello @Session["username"]
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">

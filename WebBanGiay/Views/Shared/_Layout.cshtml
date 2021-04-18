@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <link rel="stylesheet" href="~/Content/Site.css" />
 </head>
-<body style="padding-top:0">
+<body style="padding-top:0; padding-bottom:0; background-color: #fff">
     <style>
         .dropdown:hover> .dropdown-menu {
             display: block;
         }
     </style>
     <div class="sticky-top">
-        <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light" style="background-color:lightgray">
             <a href="/HomePage/HomePageForm">
                 <img src="https://www.adidas.com.vn/glass/react/3c18e3a/assets/img/icon-adidas-logo.svg" alt="" width="80" style="padding-right:20px" />
             </a>
@@ -25,18 +25,18 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
+                    <li class="nav-item pr-3 pl-3">
                         <a class="nav-link" href="/Products/List?sex=1" tabindex="-1" aria-disabled="true" style="font-size:larger">Nam</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item pr-3 pl-3">
                         <a class="nav-link" href="/Products/List?sex=2" tabindex="-1" aria-disabled="true" style="font-size:larger">Nữ</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item pr-3 pl-3">
                         <a class="nav-link" href="/Products/List?sex=3" tabindex="-1" aria-disabled="true" style="font-size:larger">Trẻ em</a>
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a style="font-size:larger" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <li class="nav-item dropdown pr-3 pl-3">
+                        <a style="font-size:larger" class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Category
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -52,8 +52,8 @@
                             <a class="dropdown-item" href="/Products/Shoes?category_id=0">Khác</a>
                         </div>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a style="font-size:larger" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <li class="nav-item dropdown pr-4 pl-4">
+                        <a style="font-size:larger" class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             All
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -62,7 +62,7 @@
                             <a class="dropdown-item" href="/Products/All?product=sold">Mua nhiều</a>
                         </div>
                     </li> 
-                    <li class="nav-item">
+                    <li class="nav-item pr-3 pl-3">
                         <a class="nav-link" href="#" tabindex="-1" aria-disabled="true" style="font-size:larger">Liên hệ</a>
                     </li>
                 </ul>
@@ -75,53 +75,53 @@
             </div>
         </nav>
     </div>
-
-    <div>
+    <div style="margin-bottom:100px">
         @RenderBody()
-        <footer style=" padding-right:5%; padding-top:150px; background-color:white">
-            <hr width="100%" />
+    </div>
+    <div>
+        <footer style=" background-color:lightgray; padding: 60px 5%">
             <div class="row">
-                <p class="col-md-4" style="padding-left: 5%; text-align: left">
-                    <strong>&copy;Nhóm vjp pro 2k </strong><br />
-                    18DTHJB1 <br />
-                </p>
-                <div class="col-md-8" style="text-align:left">
-                    <strong>Thành viên:<br /></strong>
-                    <div class="row">
-                        <p class="col-md-6" style="font-size:larger">
-                            Trần Lộc Hiệp<br />
-                            <a href='http://www.fb.com/hiepmarin' style="padding-top:10px">
-                                <img src="/Content/img/fb.png" alt="" style="max-width:40px" />
-                            </a>
-                        </p>
-                        <p class="col-md-6" style="font-size: larger">
-                            Ngô Thị Thu Trang<br />
-                            <a href='https://www.fb.com/thuu.tranqq.77' style="padding-top:10px">
-                                <img src="/Content/img/fb.png" alt="" style="max-width:40px" />
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <br />
-            <div class="row" style="padding-left: 5%">
-                <div class="col-md-7">
-                    <p style="">
+                <div class="col-4">
+                    <p style="padding-left: 5%; text-align: left">
+                        <strong>&copy;Nhóm vjp pro 2k </strong><br />
+                        18DTHJB1 <br />
+                    </p>
+                    <p style="padding-left: 5%; text-align: left">
                         Trang web này có tham khảo sản phẩm của Adidas VN
-                        <br />Project này tự làm, không hề lấy trên mạng :))
+                        <br />Project này <b>tự làm</b>, không hề lấy trên mạng :))
                         <br />HUTECH Đại học công nghệ thành phố Hồ Chí Minh - Khu D
                         <br />276 Điện Biên Phủ, Phường 17, Bình Thạnh, Hồ Chí Minh.
 
                     </p>
-                    <h5></h5>
                 </div>
-                <div class="col-md-5">
-                    <p style="text-align:right">
+                <div class="col-4">
+                    <h4 style="text-align:center">Thành viên nhóm</h4>
+                    <div class="row">
+                        <p class="col-6" style="font-size:larger; text-align:center">
+                            Trần Lộc Hiệp<br />
+                            <a href='http://www.fb.com/hiepmarin' style="padding-top:10px">
+                                <img width="50" src="https://scontent.fpnh22-1.fna.fbcdn.net/v/t1.6435-9/165856909_1637791703081549_6534011405518542622_n.jpg?_nc_cat=102&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=5RqyID58Wq0AX8hg9Ki&_nc_ht=scontent.fpnh22-1.fna&oh=9071ab9baf75aff9010c90c9f00572db&oe=609FBBE5" />
+                                <img src="/Content/img/fb.png" alt="" style="max-width:40px" />
+                            </a>
+                        </p>
+                        <p class="col-6" style="font-size: larger; text-align:center">
+                            Ngô Thị Thu Trang<br />
+                                             <a href='https://www.fb.com/thuu.tranqq.77' style="padding-top:10px">
+                                                 <img width="50" src="https://scontent.fpnh22-1.fna.fbcdn.net/v/t1.6435-9/165856909_1637791703081549_6534011405518542622_n.jpg?_nc_cat=102&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=5RqyID58Wq0AX8hg9Ki&_nc_ht=scontent.fpnh22-1.fna&oh=9071ab9baf75aff9010c90c9f00572db&oe=609FBBE5" />
+
+                                                 <img src="/Content/img/fb.png" alt="" style="max-width:40px" />
+                                             </a>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-4" style="padding-left: 5%">
+                    <p style="text-align:right; font-size:large">
                         <strong>Giảng viên hướng dẫn đồ án: </strong><br />
                         Trịnh Công Nhựt <br />
                     </p>
-                </div>
             </div>
+            </div>
+            
         </footer>
     </div>
     @Scripts.Render("~/bundles/jquery")

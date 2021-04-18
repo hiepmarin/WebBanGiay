@@ -710,7 +710,7 @@ pre code {
 .col-9 {
   -ms-flex: 0 0 75%;
   flex: 0 0 75%;
-  max-width: 75%;
+  max-width: 75%; 
 }
 
 .col-10 {
@@ -6502,7 +6502,7 @@ a.close.disabled {
   opacity: 0;
   transition-property: opacity;
   -webkit-transform: none;
-  transform: none;
+  transform: none;  
 }
 
 .carousel-fade .carousel-item.active,
@@ -6555,7 +6555,7 @@ a.close.disabled {
 .carousel-control-prev:hover, .carousel-control-prev:focus,
 .carousel-control-next:hover,
 .carousel-control-next:focus {
-  color: #fff;
+  color: #212529;
   text-decoration: none;
   outline: 0;
   opacity: 0.9;
