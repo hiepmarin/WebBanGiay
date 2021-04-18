@@ -362,7 +362,7 @@ namespace WebBanGiay.Models
                 order temp = new order();
                 temp.bill_id = Convert.ToInt32(dt.Rows[i]["bill_id"].ToString());
                 temp.acc_id = Convert.ToInt32(dt.Rows[i]["acc_id"].ToString());
-                temp.payment = Convert.ToBoolean(dt.Rows[i]["payment"].ToString());
+                //temp.payment = Convert.ToBoolean(dt.Rows[i]["payment"].ToString());
                 temp.delivery_status = Convert.ToInt32(dt.Rows[i]["delivery_status"].ToString());
                 temp.order_date = Convert.ToDateTime(dt.Rows[i]["order_date"].ToString());
                 temp.delivery_date = Convert.ToDateTime(dt.Rows[i]["delivery_date"].ToString());

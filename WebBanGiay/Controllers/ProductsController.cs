@@ -123,13 +123,20 @@ namespace WebBanGiay.Controllers
             List<order> orderlist = query.getOrder(acc_id);
             return View(orderlist);
         }
+        public ActionResult Order_Details(string bill_id, string acc_id)
+        {
+            categoryList = query.getCategory();
+            ViewBag.listCategory = categoryList;
+            List<orders_detail> list = query.getOrderDetail(bill_id);
+            return View(list);
+        }
         public ActionResult CancelOrder(string bill_id, string acc_id)
         {
             categoryList = query.getCategory();
             ViewBag.listCategory = categoryList;
-
+            query.cancelOrder(bill_id);
             List<order> orderlist = query.getOrder(acc_id);
-            return View(orderlist);
+            return View("Order",orderlist);
         }
     }
 }

@@ -15,6 +15,12 @@ namespace WebBanGiay.Controllers
         // GET: HomePage
         public ActionResult HomePageForm()
         {
+            //bool kq = Convert.ToBoolean(Session["admin"].ToString());
+            //if (kq)
+            //{
+            //    Session["user"] = null;
+            //    Session["username"] = null;
+            //}
             categoryList = query.getCategory();
             ViewBag.listCategory = categoryList;
 

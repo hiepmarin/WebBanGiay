@@ -39,12 +39,14 @@ namespace WebBanGiay.Controllers
             {
                 sanpham = new Cart(shoe_id, size);
                 listGioHang.Add(sanpham);
+                Session["Tongsoluong"] = TongSoLuong();
                 ViewBag.Tongsoluong = TongSoLuong();
                 return Redirect(strURL);
             }
             else
             {
                 sanpham.qquantity++;
+                Session["Tongsoluong"] = TongSoLuong();
                 ViewBag.Tongsoluong = TongSoLuong();
                 return Redirect(strURL);
             }
@@ -69,6 +71,7 @@ namespace WebBanGiay.Controllers
             {
                 iTongTien = listGioHang.Sum(n => n.amount);
             }
+
             return iTongTien;
         }
 
@@ -79,12 +82,14 @@ namespace WebBanGiay.Controllers
             {
                 return RedirectToAction("HomePageForm", "HomePage");
             }
+            Session["Tongsoluong"] = TongSoLuong();
             ViewBag.Tongsoluong = TongSoLuong();
             ViewBag.Tongtien = TongTien();
             return View(listGioHang);
         }
         public ActionResult GioHangPartial()
         {
+            Session["Tongsoluong"] = TongSoLuong();
             ViewBag.Tongsoluong = TongSoLuong();
             ViewBag.Tongtien = TongTien();
             return PartialView();
@@ -104,8 +109,10 @@ namespace WebBanGiay.Controllers
             }
             if (listGioHang.Count == 0)
             {
+                Session["Tongsoluong"] = TongSoLuong();
                 return RedirectToAction("HomePageForm", "HomePage");
             }
+            Session["Tongsoluong"] = TongSoLuong();
             return RedirectToAction("Cart");
         }
 
@@ -120,6 +127,7 @@ namespace WebBanGiay.Controllers
             {
                 sanpham.qquantity = int.Parse(f["txtSoluong"].ToString());
             }
+            Session["Tongsoluong"] = TongSoLuong();
             return RedirectToAction("Cart");
         }
 
@@ -128,6 +136,7 @@ namespace WebBanGiay.Controllers
             //Lay gio hang tu Session
             List<Cart> listGioHang = LayGioHang();
             listGioHang.Clear();
+            Session["Tongsoluong"] = 0;
             return RedirectToAction("HomePageForm", "HomePage");
         }
 
@@ -143,6 +152,7 @@ namespace WebBanGiay.Controllers
                 return RedirectToAction("HomePageForm", "HomePage");
             }
             List<Cart> lstGioHang = LayGioHang();
+            Session["Tongsoluong"] = TongSoLuong();
             ViewBag.TongSoLuong = TongSoLuong();
             ViewBag.TongTien = TongTien();
 
@@ -170,12 +180,13 @@ namespace WebBanGiay.Controllers
                 ctdh.bill_id = ddh.bill_id;
                 ctdh.shoe_id = item.sshoe_id;
                 ctdh.quantity = item.qquantity;
-                //ctdh.price = (decimal)item.pprice;
+                ctdh.price = (decimal)item.pprice;
                 ctdh.size = item.ssize;
                 data.order_details.InsertOnSubmit(ctdh);
             }
             data.SubmitChanges();
             Session["Cart"] = null;
+            Session["Tongsoluong"] = 0;
             return RedirectToAction("None", "Cart");
         }
 

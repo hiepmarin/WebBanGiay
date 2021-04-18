@@ -579,7 +579,44 @@ namespace WebBanGiay.Models
             return "None";
         }
 
+        // view order_detail
+        public List<orders_detail> getOrderDetail(string bill_id)
+        {
+            string sql = "select * from order_detail where bill_id = '" + bill_id + "'";
+            SqlConnection con = db.GetConnection();
+            SqlDataAdapter cmd = new SqlDataAdapter(sql, con);
+            DataTable dt = new DataTable();
+            con.Open();
+            cmd.Fill(dt);
+            // close con
+            cmd.Dispose();
+            con.Close();
 
+            List<orders_detail> list = new List<orders_detail>();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                orders_detail temp = new orders_detail();
+                temp.bill_id = Convert.ToInt32(dt.Rows[i]["bill_id"].ToString());
+                temp.shoe_id = Convert.ToInt32(dt.Rows[i]["shoe_id"].ToString());
+                temp.size = Convert.ToInt32(dt.Rows[i]["size"].ToString());
+                temp.price = Convert.ToDecimal(dt.Rows[i]["price"].ToString());
+                temp.quantity = Convert.ToInt32(dt.Rows[i]["quantity"].ToString());
+                list.Add(temp);
+            }
+            return list;
+        }
+
+        // cancel order
+        public bool cancelOrder(string bill_id)
+        {
+            string sql = "update bill set delivery_status = -1 where bill_id = '"+bill_id+"'";
+            SqlConnection con = db.GetConnection();
+            con.Open();
+            SqlCommand cmd = new SqlCommand(sql, con);
+            int kq = cmd.ExecuteNonQuery();
+            con.Close();
+            return kq > 0;
+        }
 
     }
 }

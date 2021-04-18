@@ -1,0 +1,54 @@
+﻿@model IEnumerable<WebBanGiay.Models.orders_detail>
+
+@{
+    ViewBag.Title = "OrderDetails";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="title" style="position: center; text-align: center; padding-top: 10px;">Order details</h2>
+<div class="container">
+    <table class="table" border="1">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.bill_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.shoe_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.quantity)
+            </th>
+            <th>action</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.bill_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.shoe_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.size)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.quantity)
+                </td>
+                <td>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
