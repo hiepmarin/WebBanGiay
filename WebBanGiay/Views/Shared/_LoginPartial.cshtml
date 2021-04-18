@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Session["user"] != null)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+<ul class="nav navbar-nav navbar-right">
+    <li class="nav-item dropdown">
+        <a style="font-size:larger" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Hello @Session["username"]
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/Account/Manage?username=@Session["username"]">Manage</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/Products/Order?acc_id=@Session["acc_id"]">Order</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+        </div>
+    </li>
+</ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li style="padding-right:10px">@Html.ActionLink("Sign Up", "SignUp", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

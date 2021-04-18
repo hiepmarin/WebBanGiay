@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WebBanGiay.Models.category_table>
+
+@{
+    ViewBag.Title = "Categories";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="title" style="position: center; text-align: center; padding-top: 10px;">Category management </h2>
+
+<div style="position:center; text-align:center">
+    <a class="btn btn-outline-info" href="/Admin/AddCategory">
+        Add new category
+    </a>
+</div>
+
+<div class="container" style="padding-top:10px">
+    <table class="table" border="1">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.category_idd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.category_namee)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.category_idd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.category_namee)
+                </td>
+                <td>
+                    <a class="btn btn-warning" href="/Admin/EditCategory?category_id=@item.category_idd">Edit</a> |
+                    <a class="btn btn-danger" href="/Admin/DeleteCategory?category_id=@item.category_idd">Edit</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

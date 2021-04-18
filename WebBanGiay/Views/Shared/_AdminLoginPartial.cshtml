@@ -1,0 +1,23 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Session["user"] != null)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <li style="padding-right:10px">
+                @Html.ActionLink("Hello admin " + Session["name"] + "!", "Manage", "Admin", routeValues: Session["user"], htmlAttributes: new { title = "Manage" })
+                @*@Html.ActionLink("Hello " + Session["name"] + "!", "Manage", "Account", new { acc = Session["user"] })*@
+            </li>
+            <li>@Html.ActionLink("Log off", "LogOff", "Admin")</li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Log in", "Login", "Admin", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}
+

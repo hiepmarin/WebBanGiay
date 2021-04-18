@@ -1,0 +1,24 @@
+﻿@model IEnumerable<WebBanGiay.Models.product>
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Search</h2>
+<div class="row container" style="padding-top:10px">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3">
+
+            <div class="card">
+                <img src="@item.image" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title" style="font-size:small">@item.name</h5>
+                    <p class="card-text">@item.detail</p>
+                    <a href="#" class="btn btn-primary">Xem</a>
+                </div>
+            </div>
+
+        </div>
+    }
+</div>

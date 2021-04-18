@@ -1,0 +1,73 @@
+﻿@model IEnumerable<WebBanGiay.Models.order>
+
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="title" style="position: center; text-align: center; padding-top: 10px;">All Order</h2>
+
+
+<div class="container">
+    <table class="table" border="1">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.bill_id)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.payment)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.order_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.delivery_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.total)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.status)
+            </th>
+            <th>
+                action
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.bill_id)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.payment)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.order_date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.delivery_date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.total)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.status)
+                </td>
+                <td>
+                    <a class="btn btn-info" href="/Products/OrderDetails?bill_id=@item.bill_id">Thông tin</a>
+                    @if (item.action != "None")
+                    {
+                        <a class="btn btn-danger" href="/Products/CancelOrder?bill_id=@item.bill_id&&acc_id=@item.acc_id">Hủy</a>
+                    }
+                    else
+                    {
+
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

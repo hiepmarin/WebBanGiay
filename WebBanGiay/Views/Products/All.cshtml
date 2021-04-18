@@ -1,0 +1,35 @@
+﻿@model IEnumerable<WebBanGiay.Models.product>
+@{
+    ViewBag.Title = "All";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="position: center; text-align: center; padding-top: 10px;">@ViewBag.category</h2>
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3" style="padding-top:10px">
+                @Html.HiddenFor(model => item.shoe_id)
+                <div class="card">
+                    <a href="/Products/ShoesDetail?shoe_id=@Html.DisplayFor(model => item.shoe_id) ">
+                        <img src="@item.image" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-img-overlay" style=" max-height:100px">
+                        <p style="text-align:left; position:absolute">@item.sex</p>
+                        @*<p style="text-align:right">@item.category_name</p>*@
+                    </div>
+
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-size:medium">@item.name</h5>
+                        <p class="card-text">@item.detail</p>
+                        <a href="/Products/ShoesDetail?shoe_id=@Html.DisplayFor(model => item.shoe_id) " class="btn btn-primary">
+                            Xem
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+</div>

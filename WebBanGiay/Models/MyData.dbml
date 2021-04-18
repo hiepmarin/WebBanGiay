@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="test" Class="MyDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=MSI;Initial Catalog=test;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="testConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.account" Member="accounts">
+    <Type Name="account">
+      <Column Name="acc_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="username" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="password" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="phone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="address" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="birth" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="account_bill" Member="bills" ThisKey="acc_id" OtherKey="acc_id" Type="bill" />
+      <Association Name="account_cart" Member="carts" ThisKey="acc_id" OtherKey="acc_id" Type="cart" />
+    </Type>
+  </Table>
+  <Table Name="dbo.admin_account" Member="admin_accounts">
+    <Type Name="admin_account">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="password" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.bill" Member="bills">
+    <Type Name="bill">
+      <Column Name="bill_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="acc_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="payment" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="delivery_status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="order_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="delivery_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="total" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="bill_order_detail" Member="order_details" ThisKey="bill_id" OtherKey="bill_id" Type="order_detail" />
+      <Association Name="account_bill" Member="account" ThisKey="acc_id" OtherKey="acc_id" Type="account" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.cart" Member="carts">
+    <Type Name="cart">
+      <Column Name="cart_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="acc_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="shoe_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="account_cart" Member="account" ThisKey="acc_id" OtherKey="acc_id" Type="account" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.category" Member="categories">
+    <Type Name="category">
+      <Column Name="category_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="category_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="category_shoe_info" Member="shoe_infos" ThisKey="category_id" OtherKey="category_id" Type="shoe_info" />
+    </Type>
+  </Table>
+  <Table Name="dbo.order_detail" Member="order_details">
+    <Type Name="order_detail">
+      <Column Name="bill_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="shoe_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="size" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="price" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="bill_order_detail" Member="bill" ThisKey="bill_id" OtherKey="bill_id" Type="bill" IsForeignKey="true" />
+      <Association Name="shoe_order_detail" Member="shoe" ThisKey="shoe_id,size" OtherKey="shoe_id,size" Type="shoe" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.shoe_info" Member="shoe_infos">
+    <Type Name="shoe_info">
+      <Column Name="shoe_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="image" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="detail" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="category_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sex" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="price" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Association Name="shoe_info_shoe" Member="shoes" ThisKey="shoe_id" OtherKey="shoe_id" Type="shoe" />
+      <Association Name="category_shoe_info" Member="category" ThisKey="category_id" OtherKey="category_id" Type="category" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.shoes" Member="shoes">
+    <Type Name="shoe">
+      <Column Name="shoe_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="size" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="stock" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="sold" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="shoe_order_detail" Member="order_details" ThisKey="shoe_id,size" OtherKey="shoe_id,size" Type="order_detail" />
+      <Association Name="shoe_info_shoe" Member="shoe_info" ThisKey="shoe_id" OtherKey="shoe_id" Type="shoe_info" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

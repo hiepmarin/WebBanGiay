@@ -1,0 +1,63 @@
+﻿@model IEnumerable<WebBanGiay.Models.product>
+@{
+    ViewBag.Title = "Man";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+</head>
+<body>
+
+    @foreach (var item in Model)
+    {
+    <div class="container">
+        <div class="card mb-3" style="max-width:1500px; padding-right:10px; margin:10px">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="@item.image" alt="..." class="img-fluid">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <p class="card-text">@item.category_name/ @item.sex</p>
+                        <h2 class="card-title">@item.name</h2>
+                        <p class="card-text">Còn: @item.stock sản phẩm</p>
+                        <p class="card-text">Đã bán @item.sold sản phẩm</p>
+                        <p class="card-text" style="padding-right:5px">Chọn size:</p>
+                        @foreach (var list in item.sizeStockSold)
+                        {
+                            @*<p class="card-text">Còn: @list.stock sản phẩm</p>
+            <p class="card-text">Đã bán @list.sold sản phẩm</p>*@
+                            <a id="Datmua" class="btn btn-success" style="padding-right:5px" href="@Url.Action("ThemGiohang","Cart",new { @shoe_id = item.shoe_id, @size = list.size, @strURL = Request.Url.ToString() })">
+                                <strong>US @list.size </strong>
+                            </a>
+
+                        }
+
+                        <p class="card-text"><small class="text-muted"><br />@item.detail</small></p>
+                        @*<div id="Datmua" class="btn btn-success">
+            <a href="@Url.Action("ThemGiohang","Cart",new { @shoe_id = item.shoe_id, @size = 39, @strURL = Request.Url.ToString() })" style="color:white;font-weight:bold">
+                ĐẶT MUA
+            </a>
+        </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+</body>
+</html>

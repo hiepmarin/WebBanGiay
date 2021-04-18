@@ -1,0 +1,68 @@
+﻿@model IEnumerable<WebBanGiay.Models.shoes_table>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="title" style="position: center; text-align: center; padding-top: 10px;">Shoes Details</h2>
+
+<div class="container">
+    <div class="row" style="padding-bottom:0">
+        <a class="col-md-10">
+            @if (ViewBag.message != null)
+            {
+                <p class="text-danger" style="">@ViewBag.message</p>
+            }
+
+        </a>
+        <div class="col-md-2"></div>
+    </div>
+    <div style="position:center; text-align:center; padding-bottom:10px">
+        <a class="btn btn-outline-info" href="/Admin/AddShoesDetails">
+            Add new Product
+        </a>
+    </div>
+    <table class="table" border="1" style="position:center">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.shoe_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.stock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sold)
+            </th>
+            <th>
+                action
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.shoe_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.size)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.stock)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sold)
+                </td>
+                <td>
+                    <a class="btn btn-warning" href="/Admin/EditShoesDetails?shoe_id=@item.shoe_id&&size=@item.size">Edit</a> |
+                    <a class="btn btn-danger" href="/Admin/Delete_Shoes_Details?shoe_id=@item.shoe_id&&size=@item.size">Delete</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

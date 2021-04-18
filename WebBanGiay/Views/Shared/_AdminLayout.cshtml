@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body style="padding-top:0">
+
+    <div class="">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a href="/Admin/Index">
+                <img src="https://www.adidas.com.vn/glass/react/3c18e3a/assets/img/icon-adidas-logo.svg" alt="" width="80" style="padding-right:20px" />
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin/Shoes" tabindex="-1" aria-disabled="true" style="font-size:larger">Shoes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin/Categories" tabindex="-1" aria-disabled="true" style="font-size:larger">Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin/Order" tabindex="-1" aria-disabled="true" style="font-size:larger">Order Details</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true" style="font-size:larger">Liên hệ</a>
+                    </li>
+                </ul>
+                <div style="padding-left:10px">
+                    @Html.Partial("_AdminLoginPartial")
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div>
+        @RenderBody()
+        <footer style=" padding-right:5%; padding-top:150px; background-color:white">
+            <hr width="100%" />
+            <div class="row">
+                <p class="col-md-4" style="padding-left: 5%; text-align: left">
+                    <strong>&copy;Nhóm vjp pro 2k </strong><br />
+                    18DTHJB1 <br />
+                </p>
+                <div class="col-md-8" style="text-align:left">
+                    <strong>Thành viên:<br /></strong>
+                    <div class="row">
+                        <p class="col-md-6" style="font-size:larger">
+                            Trần Lộc Hiệp<br />
+                                         <a href='http://www.fb.com/hiepmarin' style="padding-top:10px">
+                                             <img src="/Content/img/fb.png" alt="" style="max-width:40px" />
+                                         </a>
+                        </p>
+                        <p class="col-md-6" style="font-size: larger">
+                            Ngô Thị Thu Trang<br />
+                                             <a href='https://www.fb.com/thuu.tranqq.77' style="padding-top:10px">
+                                                 <img src="/Content/img/fb.png" alt="" style="max-width:40px" />
+                                             </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row" style="padding-left: 5%">
+                <div class="col-md-7">
+                    <p style="">
+                        Trang web này có tham khảo sản phẩm của Adidas VN
+                        <br />Project này tự làm, không hề lấy trên mạng :))
+                        <br />HUTECH Đại học công nghệ thành phố Hồ Chí Minh - Khu D
+                        <br />276 Điện Biên Phủ, Phường 17, Bình Thạnh, Hồ Chí Minh.
+
+                    </p>
+                    <h5></h5>
+                </div>
+                <div class="col-md-5">
+                    <p style="text-align:right">
+                        <strong>Giảng viên hướng dẫn đồ án: </strong><br />
+                        Trịnh Công Nhựt <br />
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
